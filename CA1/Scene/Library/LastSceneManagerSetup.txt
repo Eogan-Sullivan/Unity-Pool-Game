@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Middleare.unity
+  isLoaded: 1
+  isActive: 1
