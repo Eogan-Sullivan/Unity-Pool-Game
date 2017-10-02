@@ -24,7 +24,7 @@ public class CueController : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(1))
         {
-            ballScript.velocity = 9.8f * (3f * ballcam.transform.up);
+            ballScript.velocity = 9.8f * (2f * ballcam.transform.up);
 
         }
     }

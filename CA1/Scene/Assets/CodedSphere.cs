@@ -7,8 +7,9 @@ public class CodedSphere : MonoBehaviour
 {
 
     //Coefficient of Restitution 
-    float CoR = 0.5f, Mass = 1.0f;
+    float CoR = 0.5f, Mass = 1.0f, Mass1 = 1.0f;
     public Vector3 accelaration, velocity;
+  //  public Rigidbody sphereBody;
     private bool collisionOccurred = false;
     private CodedSphere occurredWith;
     planeScript[] thePlanes;
@@ -25,6 +26,7 @@ public class CodedSphere : MonoBehaviour
     {
 
         thePlanes = FindObjectsOfType<planeScript>();
+        
 
 
 
@@ -96,9 +98,11 @@ public class CodedSphere : MonoBehaviour
             CodedSphere otherSphere = collision.gameObject.GetComponent<CodedSphere>();
 
             if (otherSphere) collidesWith(otherSphere);
-        }  
+        }
+        collisionOccurred = false;
 
-        
+
+
     }
 
   
@@ -106,6 +110,8 @@ public class CodedSphere : MonoBehaviour
     private void collidesWith(CodedSphere otherSphere)
     {
 
+            // sphereBody = otherSphere.GetComponent<Rigidbody>();
+            // Mass = sphereBody.mass;
        
             Vector3 n = (transform.position - otherSphere.transform.position).normalized;
 
@@ -115,7 +121,7 @@ public class CodedSphere : MonoBehaviour
             Vector3 u1 = CoR *  parallelComponent(velocity, n);
             Vector3 u2 = CoR * parallelComponent(otherSphere.velocity, n);
 
-            float M1 = Mass, M2 = otherSphere.Mass;
+            float M1 = Mass1, M2 = otherSphere.Mass;
 
             Vector3 v1 = ((M1 - M2) / (M1 + M2)) * u1 + (2 * M2 / (M1 + M2)) * u2;
             Vector3 v2 = ((M2 - M1) / (M1 + M2)) * u2 + (2 * M1 / (M1 + M2)) * u1;
@@ -132,6 +138,7 @@ public class CodedSphere : MonoBehaviour
         velocity = newVelocity;
         collisionOccurred = true;
         occurredWith = codedSphere;
+      
 
     }
 
