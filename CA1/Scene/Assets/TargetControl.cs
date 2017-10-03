@@ -2,16 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TargetControl : MonoBehaviour {
 
     int score;
-    GameObject scoreboard;
-    string input;
+    string scoreinput;
+    public Text scoreboard;
 	// Use this for initialization
 	void Start () {
 
-        scoreboard = GameObject.FindGameObjectWithTag("ScoreTxt");
+   
+
 
   
 
@@ -20,7 +22,9 @@ public class TargetControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        input = "Score: " + score;
+        
+        scoreinput = "Score: " + score;
+        scoreboard.text = scoreinput;
 		
 	}
 
@@ -33,13 +37,7 @@ public class TargetControl : MonoBehaviour {
         score += 5;
         
 
-   
-
-
     }
 
-    private void OnGUI()
-    {
-        GUI.Label(new Rect(200, 100, 0, 0), input);
-    }
+
 }

@@ -1,22 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class ScoreBoard: MonoBehaviour
 {
-    public GameObject hazard;
-    public Vector3 spawnValues;
-    public int hazardCount;
-    public float spawnWait;
-    public float startWait;
-    public float waveWait;
+  
 
-    public GUIText scoreText;
+    public Text scoreText;
     private int score;
 
     void Start()
     {
         score = 0;
-        UpdateScore();
+
     }
 
    
