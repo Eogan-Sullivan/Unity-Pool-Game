@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class TargetControl : MonoBehaviour {
 
-    int score;
+    public int score;
     string scoreinput;
     public Text scoreboard;
+    
 	// Use this for initialization
 	void Start () {
 
@@ -33,7 +34,7 @@ public class TargetControl : MonoBehaviour {
 
 
 
-
+        
         score += 5;
         
 

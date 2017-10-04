@@ -24,8 +24,8 @@ public class CameraController : MonoBehaviour
         vertical *= Time.deltaTime;
 
         float desiredAngleY = target.transform.eulerAngles.y;
-        float desiredAngleX = target.transform.eulerAngles.x;
-        Quaternion rotation = Quaternion.Euler(desiredAngleX, desiredAngleY, 0);
+       // float desiredAngleX = target.transform.eulerAngles.x;
+        Quaternion rotation = Quaternion.Euler(0, desiredAngleY, 0);
         transform.position = target.transform.position - (rotation * offset); ;
 
         transform.LookAt(target.transform);

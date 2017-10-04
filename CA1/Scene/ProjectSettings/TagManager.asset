@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CueBall
   - ScoreTxt
+  - 8ball
   layers:
   - Default
   - TransparentFX

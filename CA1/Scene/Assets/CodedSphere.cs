@@ -7,30 +7,22 @@ public class CodedSphere : MonoBehaviour
 {
 
     //Coefficient of Restitution 
-    float CoR = 0.5f, Mass = 1.0f, Mass1 = 1.0f;
+    float CoR, Mass;
     public Vector3 accelaration, velocity;
-  //  public Rigidbody sphereBody;
     private bool collisionOccurred = false;
     private CodedSphere occurredWith;
     planeScript[] thePlanes;
-  
-
-  
-
-
-
-
+    int collisonTimer = 3;
+   
 
     // Use this for initialization
     void Start()
     {
 
         thePlanes = FindObjectsOfType<planeScript>();
-        
-
-
-
-
+        Mass = Mass = UnityEngine.Random.Range(0.5f, 1.0f);
+        CoR = Mass * .5f;
+        this.transform.localScale = new Vector3(Mass, Mass, Mass);
 
 
     }
@@ -40,13 +32,17 @@ public class CodedSphere : MonoBehaviour
     {
         
         sphereAndPlane();
+        if (collisonTimer > 0)
+        {
+            collisonTimer --;
+        }
+        else
+        {
+            collisionOccurred = false;
+            collisonTimer = 3;
+        }
 
- 
-
-  
-      
-
-
+        velocity -= velocity * 0.01f;
     }
 
     // if (transform.position.y < 0.5f)
@@ -55,9 +51,6 @@ public class CodedSphere : MonoBehaviour
     //  velocity = -CoR*velocity; 
 
     //  }
-
-
-
 
 
     /// <summary>
@@ -84,9 +77,7 @@ public class CodedSphere : MonoBehaviour
     Vector3 perpendicularComponent(Vector3 v, Vector3 n)
     {
 
-
         return v - parallelComponent(v, n);
-
 
     }
     private void OnTriggerEnter(Collider collision)
@@ -99,7 +90,8 @@ public class CodedSphere : MonoBehaviour
 
             if (otherSphere) collidesWith(otherSphere);
         }
-        collisionOccurred = false;
+        
+      
 
 
 
@@ -121,23 +113,32 @@ public class CodedSphere : MonoBehaviour
             Vector3 u1 = CoR *  parallelComponent(velocity, n);
             Vector3 u2 = CoR * parallelComponent(otherSphere.velocity, n);
 
-            float M1 = Mass1, M2 = otherSphere.Mass;
+            float M1 = this.Mass, M2 = otherSphere.Mass;
 
             Vector3 v1 = ((M1 - M2) / (M1 + M2)) * u1 + (2 * M2 / (M1 + M2)) * u2;
             Vector3 v2 = ((M2 - M1) / (M1 + M2)) * u2 + (2 * M1 / (M1 + M2)) * u1;
 
             velocity =  thisPerp + v1;
+           // this.transform.position = u1 * Time.deltaTime;
 
             otherSphere.newVelocityAfterCollisionwith(this, otherPerp + v2);
-        
- 
+           // otherSphere.newPositionAfterCollisionwith(otherSphere,u2);
+
+
+
     }
+
+   // private void newPositionAfterCollisionwith(CodedSphere otherSphere, Vector3 u2)
+  // {
+      //  otherSphere.transform.position = u2 * Time.deltaTime;
+   // }
 
     private void newVelocityAfterCollisionwith(CodedSphere codedSphere, Vector3 newVelocity)
     {
         velocity = newVelocity;
         collisionOccurred = true;
         occurredWith = codedSphere;
+       
       
 
     }
