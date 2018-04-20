@@ -589,11 +589,12 @@ PlayerSettings:
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
     Build: 1
+    Collab: 1
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
   cloudProjectId: afd1087f-e1fb-48c9-ace4-1ffcca566a61
-  projectName: Scene (1)
+  projectName: DevOps CA
   organizationId: eogansullivan
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
