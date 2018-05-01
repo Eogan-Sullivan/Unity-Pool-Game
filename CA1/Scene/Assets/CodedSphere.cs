@@ -88,7 +88,7 @@ public class CodedSphere : MonoBehaviour
         {
             CodedSphere otherSphere = collision.gameObject.GetComponent<CodedSphere>();
 
-            if (otherSphere) collidesWith(otherSphere);
+            if (otherSphere) {collidesWith(otherSphere);}
         }
         
       

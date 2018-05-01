@@ -16,7 +16,7 @@ public class CueController : MonoBehaviour
         timer = 3;
     }
 
-    // Update is called once per frame
+    // Update is called once per frame(test)
     void Update()
     {
 
