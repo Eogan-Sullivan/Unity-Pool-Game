@@ -34,7 +34,7 @@ public class CodedSphere : MonoBehaviour
         sphereAndPlane();
         if (collisonTimer > 0)
         {
-            collisonTimer --;
+            collisonTimer ++;
         }
         else
         {
